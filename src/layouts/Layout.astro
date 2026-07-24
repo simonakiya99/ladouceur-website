@@ -3,7 +3,7 @@ import { translations } from '../i18n/translations.js'
 const { lang = 'nl', title, description } = Astro.props
 const T = translations[lang]
 const privacyHref = '/privacybeleid/'
-const whatsappNumber = '31687065368'
+const whatsappUrl = 'https://wa.me/message/WCHNSBSGRS76F1'
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -29,7 +29,7 @@ const whatsappNumber = '31687065368'
 
     <!-- WhatsApp floating button -->
     <a
-      href={`https://wa.me/${whatsappNumber}`}
+      href={whatsappUrl}
       class="whatsapp-float"
       target="_blank"
       rel="noopener noreferrer"

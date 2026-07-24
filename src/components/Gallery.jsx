@@ -4,7 +4,7 @@ import { translations } from '../i18n/translations'
 const cakes = [
   {
     id: 1,
-    title: { nl: 'Gouden Accent Taart', ti: 'ናይ ወርቂ ኣገልግሎት ቀንዲ' },
+    title: { nl: 'Gouden Accent Taart', ti: 'ናይ ወርቂ ግርማ ኬክ' },
     category: 'speciaal',
     desc: {
       nl: 'Strakke taart met wit glazuur, gouden strepen en parelmoeren details.',
@@ -14,7 +14,7 @@ const cakes = [
   },
   {
     id: 2,
-    title: { nl: 'Hartvormige Verjaardagstaart', ti: 'ናይ ልደት ልቢ ቀንዲ' },
+    title: { nl: 'Hartvormige Verjaardagstaart', ti: 'ናይ ልቢ ቅርጺ ናይ ልደት ኬክ' },
     category: 'verjaardag',
     desc: {
       nl: 'Romantische hartvormige taart met zachte crème en gouden tekst.',
@@ -24,7 +24,7 @@ const cakes = [
   },
   {
     id: 3,
-    title: { nl: 'Bride-to-Be Taart', ti: 'ናይ ሰርግ ሰብኣዊ ኬክ' },
+    title: { nl: 'Bride-to-Be Taart', ti: 'ናይ መርዓት ኬክ' },
     category: 'bruiloft',
     desc: {
       nl: 'Prachtige bruidstaart met elegante topper en subtiele parels.',
@@ -34,7 +34,7 @@ const cakes = [
   },
   {
     id: 4,
-    title: { nl: 'Pastel Verjaardagscake', ti: 'ዕማዪ ልደት ኬክ' },
+    title: { nl: 'Pastel Verjaardagscake', ti: 'ፓስተል ናይ ልደት ኬክ' },
     category: 'verjaardag',
     desc: {
       nl: 'Dromerige taart met perzikroze bloemen en luxe gouden details.',
@@ -44,7 +44,7 @@ const cakes = [
   },
   {
     id: 5,
-    title: { nl: 'Bloemen & Kersen Taart', ti: 'ናይ አበባን ቀለማዊ ኖርማል ኬክ' },
+    title: { nl: 'Bloemen & Kersen Taart', ti: 'ናይ ኣበባን ቸሪን ኬክ' },
     category: 'speciaal',
     desc: {
       nl: 'Luxe taart met verse bloemen, kersen en een zachte crème afwerking.',
@@ -54,7 +54,7 @@ const cakes = [
   },
   {
     id: 6,
-    title: { nl: 'Roze Bloemencake', ti: 'ናይ አበባ ስግንዛ ኬክ' },
+    title: { nl: 'Roze Bloemencake', ti: 'ናይ ሮዝ ኣበባ ኬክ' },
     category: 'speciaal',
     desc: {
       nl: 'Romantische tweelaagse creamcake met roze bloemdecoratie en een luxe finish.',
@@ -64,7 +64,7 @@ const cakes = [
   },
   {
     id: 7,
-    title: { nl: 'Jubileumtaart met Rozen', ti: 'ናይ 25 ኣመት ቀረጺ ኬክ' },
+    title: { nl: 'Jubileumtaart met Rozen', ti: 'ናይ ኢዮቤልዩ ኬክ ብሮዝ ዝተሸለመ' },
     category: 'speciaal',
     desc: {
       nl: 'Feestelijke taart met verse rozen, gouden cijfers en een elegante presentatie.',
@@ -74,7 +74,7 @@ const cakes = [
   },
   {
     id: 8,
-    title: { nl: 'Chocolade Signature Cake', ti: 'ናይ ቸኮሌት ዘይምረኸት ኬክ' },
+    title: { nl: 'Chocolade Signature Cake', ti: 'ፍሉይ ናይ ቸኮሌት ኬክ' },
     category: 'speciaal',
     desc: {
       nl: 'Strakke chocoladecake met glanzende afwerking en modern bloemendecor.',
@@ -84,7 +84,7 @@ const cakes = [
   },
   {
     id: 9,
-    title: { nl: 'Jubileum Celebration Taart', ti: 'ናይ ምትእዛዛ ዕለት ኬክ' },
+    title: { nl: 'Jubileum Celebration Taart', ti: 'ናይ ኢዮቤልዩ ብዓል ኬክ' },
     category: 'speciaal',
     desc: {
       nl: 'Feestelijke taart met luxe rozen, parelaccenten en verfijnde details.',
@@ -101,7 +101,7 @@ const cakes = [
   },
   {
     id: 11,
-    title: { nl: 'Elegante Bruidstaart', ti: 'ጸጋዕ ናይ መርዓ ኬክ' },
+    title: { nl: 'Elegante Bruidstaart', ti: 'ጸጋ ዘለዎ ናይ መርዓ ኬክ' },
     category: 'bruiloft',
     desc: { nl: 'Stijlvolle bruidstaart met verfijnde afwerking.', ti: 'ጸጋዕ ናይ መርዓ ኬክ ብዝጥዕም ኣሰራርሓ።' },
     img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80'
@@ -143,7 +143,7 @@ const cakes = [
   },
   {
     id: 17,
-    title: { nl: 'Creatieve Maatwerktaart', ti: 'ፍጡር ናይ ምርጫ ኬክ' },
+    title: { nl: 'Creatieve Maatwerktaart', ti: 'ፍጠራዊ ኬክ ብመሰረት ምርጫኹም' },
     category: 'speciaal',
     desc: { nl: 'Volledig op maat gemaakte taart naar uw wensen.', ti: 'ምሉእ ብምሉእ ብመሰረት ድሌትኩም ዝተሰርሐ ኬክ።' },
     img: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&q=80'
@@ -196,7 +196,7 @@ function Gallery({ lang }) {
   return (
     <section className="gallery-section" id="galerij">
       <div className="section-header">
-        <span className="section-tag">{T.gallery_tag}</span>
+        {T.gallery_tag && <span className="section-tag">{T.gallery_tag}</span>}
         <h2 className="section-title">{T.gallery_title_pre}<em>{T.gallery_title_em}</em></h2>
         <div className="divider"></div>
       </div>
@@ -252,7 +252,6 @@ function Gallery({ lang }) {
             <div className="gallery-card-body">
               <span className="cake-card-tag">{getCategoryTag(cake.category)}</span>
               <h3 className="gallery-card-title">{cake.title[lang]}</h3>
-              <p className="gallery-card-desc">{cake.desc[lang]}</p>
             </div>
           </div>
         ))}

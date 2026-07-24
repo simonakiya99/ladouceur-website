@@ -546,7 +546,7 @@ body {
 /* ===== STATS BAR ===== */
 .stats-bar {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   background: #1a1a1a;
   padding: 2.5rem 5rem;
   gap: 2rem;
@@ -1812,7 +1812,7 @@ footer {
 
   /* Stats */
   .stats-bar {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     padding: 1.5rem 1rem;
     gap: 0.25rem;
   }
