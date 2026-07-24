@@ -172,6 +172,9 @@ body {
   border-color: #c9a96e;
 }
 .navbar:not(.scrolled) .hamburger span { background: #fff; }
+.navbar:not(.scrolled) .lang-switcher { border-color: rgba(255, 255, 255, 0.3); }
+.navbar:not(.scrolled) .lang-btn { color: rgba(255, 255, 255, 0.55); }
+.navbar:not(.scrolled) .lang-btn.active { background: rgba(255, 255, 255, 0.18); color: #fff; }
 
 /* Hamburger */
 .hamburger {
@@ -1084,11 +1087,40 @@ footer {
   font-weight: 500;
 }
 
-/* ===== NAVBAR RECHTS ===== */
+/* ===== TAALSCHAKELAAR ===== */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.lang-switcher {
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.lang-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #aaa;
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  background: #1a1a1a;
+  color: #faf8f5;
+}
+
+.lang-btn:not(.active):hover {
+  color: #1a1a1a;
 }
 
 .mobile-menu-bottom {
@@ -1101,6 +1133,10 @@ footer {
   width: 100%;
   text-align: center;
   padding: 14px;
+}
+
+.mobile-menu-bottom .lang-switcher {
+  align-self: flex-start;
 }
 
 /* ===== CURSUSSEN ===== */
@@ -1490,6 +1526,25 @@ footer {
   font-weight: 500;
 }
 
+/* ===== TIGRINYA FONT OVERRIDES ===== */
+body.lang-ti {
+  font-family: 'Noto Sans Ethiopic', sans-serif;
+}
+
+body.lang-ti .hero-title,
+body.lang-ti .section-title,
+body.lang-ti .gallery-card-title,
+body.lang-ti .order-info h2,
+body.lang-ti .stat-number,
+body.lang-ti .hero-img-badge-num {
+  font-family: 'Noto Sans Ethiopic', sans-serif;
+}
+
+body.lang-ti .nav-logo,
+body.lang-ti .footer-logo {
+  font-family: 'Noto Sans Ethiopic', sans-serif;
+  letter-spacing: 0;
+}
 
 /* ===== WHATSAPP FLOATING BUTTON ===== */
 .whatsapp-float {
