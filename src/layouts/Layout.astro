@@ -4,6 +4,11 @@ const { lang = 'nl', title, description } = Astro.props
 const T = translations[lang]
 const privacyHref = lang === 'ti' ? '/ti/privacybeleid/' : '/privacybeleid/'
 const whatsappUrl = 'https://wa.me/message/WCHNSBSGRS76F1'
+
+const path = Astro.url.pathname
+const nlPath = lang === 'ti' ? (path.replace(/^\/ti\//, '/') || '/') : path
+const tiPath = lang === 'ti' ? path : `/ti${path}`
+const siteUrl = 'https://sb-bakery.netlify.app'
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -11,12 +16,15 @@ const whatsappUrl = 'https://wa.me/message/WCHNSBSGRS76F1'
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="canonical" href={`https://sb-bakery.netlify.app${Astro.url.pathname}`} />
+    <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
+    <link rel="alternate" hreflang="nl" href={`${siteUrl}${nlPath}`} />
+    <link rel="alternate" hreflang="ti" href={`${siteUrl}${tiPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${nlPath}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`https://sb-bakery.netlify.app${Astro.url.pathname}`} />
-    <meta property="og:image" content="https://sb-bakery.netlify.app/logo.png" />
+    <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+    <meta property="og:image" content={`${siteUrl}/logo.png`} />
     <meta property="og:locale" content={lang === 'ti' ? 'ti' : 'nl_NL'} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

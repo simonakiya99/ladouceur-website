@@ -69,7 +69,7 @@ function CourseEnroll({ lang }) {
   return (
     <div className="enroll-overlay" onClick={handleClose}>
       <div className="enroll-modal" onClick={e => e.stopPropagation()}>
-        <button className="enroll-close" onClick={handleClose} aria-label="Sluiten">×</button>
+        <button className="enroll-close" onClick={handleClose} aria-label={T.aria_close}>×</button>
 
         <div className="enroll-header">
           <span className="enroll-badge">{courseName}</span>

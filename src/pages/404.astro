@@ -1,15 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import { translations } from '../i18n/translations.js'
 import '../index.css'
+
+const lang = Astro.url.pathname.startsWith('/ti/') || Astro.url.pathname === '/ti' ? 'ti' : 'nl'
+const T = translations[lang]
+const homeHref = lang === 'ti' ? '/ti/' : '/'
 ---
-<Layout lang="nl" title="404 — SB Bakery" description="Pagina niet gevonden">
+<Layout lang={lang} title="404 — SB Bakery" description={T.not_found_msg}>
   <div class="not-found">
     <div class="not-found-inner">
       <div class="not-found-icon">🎂</div>
       <h1 class="not-found-title">404</h1>
-      <p class="not-found-sub">Pagina niet gevonden</p>
-      <p class="not-found-msg">De pagina die u zoekt bestaat niet of is verplaatst.</p>
-      <a href="/" class="btn-primary not-found-btn">← Terug naar home</a>
+      <p class="not-found-sub">{T.not_found_title}</p>
+      <p class="not-found-msg">{T.not_found_msg}</p>
+      <a href={homeHref} class="btn-primary not-found-btn">{T.not_found_btn}</a>
     </div>
   </div>
 </Layout>

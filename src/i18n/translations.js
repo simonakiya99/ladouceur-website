@@ -7,6 +7,8 @@ export const translations = {
     nav_bestellen: 'Bestellen',
     nav_contact: 'Contact',
     nav_cta: 'Bestel nu',
+    aria_menu: 'Menu openen',
+    aria_close: 'Sluiten',
 
     // HERO
     hero_badge: 'Ambachtelijk · Met liefde gemaakt',
@@ -78,7 +80,8 @@ export const translations = {
     about_text2: 'Ik heb een groot aantal tevreden klanten. Kwaliteit en persoonlijke aandacht staan ​​centraal in al mijn werk.',
     about_btn_gallery: 'Bekijk haar gemaakte taarten',
     about_btn_gallery_close: 'Verberg taarten',
-    about_year_label: 'Jaar van oprichting',
+    about_badge_l1: 'Handgemaakt',
+    about_badge_l2: 'met liefde',
 
     // TESTIMONIALS
     testimonials_tag: 'Klantbeoordelingen',
@@ -94,7 +97,6 @@ export const translations = {
     courses_type_physical: 'Fysiek',
     courses_type_online: 'Online',
     courses_duration_label: 'Duur',
-    courses_price_label: 'Prijs',
     courses_btn: 'Inschrijven',
     courses_note: '* Exacte data en locaties worden besproken bij aanmelding.',
 
@@ -160,6 +162,8 @@ export const translations = {
     nav_bestellen: 'ምእዛዝ',
     nav_contact: 'ርኸቡና',
     nav_cta: 'ይኣዝዙ',
+    aria_menu: 'ሜኑ ክፈቱ',
+    aria_close: 'ዕጸዉ',
 
     // HERO
     hero_badge: 'ብኢድ ዝተዳለወ · ብፍቕሪ ዝተሰርሐ',
@@ -231,7 +235,8 @@ export const translations = {
     about_text2: 'ካብ ቸኮሌት ክሳዕ ቫኒላ፣ ካብ ፍሩታዊ ኬካት ክሳዕ ዘመናዊ ናይ ዲዛይን ስራሓት — ብምሩጽ ኣቕሑን ብሞያዊ ኣገባብን ዝተዳለዉ ኬካት ነቕርብ። ዕላማና ንዓማዊልና ጣዕሚ፣ ጽሬትን ዘይርሳዕ ተሞክሮን ምቕራብ እዩ።',
     about_btn_gallery: 'ዝሰራሕናዮም ኬክታት ርአ',
     about_btn_gallery_close: 'ስእልታት ሕባእ',
-    about_year_label: 'ዝጀመርክሉ ዓመት',
+    about_badge_l1: 'ብኢድ ዝተዳለወ',
+    about_badge_l2: 'ብፍቕሪ',
 
     // TESTIMONIALS
     testimonials_tag: 'ናይ ዓማዊል ርእይቶ',
@@ -245,9 +250,8 @@ export const translations = {
     courses_title_em: 'ዳህስስ',
     courses_subtitle: 'ምስራሕ ኬክ ተማሃር — ካብ መጀመርታ ክሳብ መወዳእታ፡ ብኣካል ወይ ብኢንተርነት።',
     courses_type_physical: 'ብኣካል',
-    courses_type_online: 'ብonline',
+    courses_type_online: 'ብኦንላይን',
     courses_duration_label: 'ግዜ',
-    courses_price_label: 'ዋጋ',
     courses_btn: 'ተመዝገቡ',
     courses_note: '* ልክዕ ዕለትን ቦታን ኣብ እዋን ምዝገባ ክነፍልጠኩም ኢና።',
 

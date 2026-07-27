@@ -25,14 +25,14 @@ const testimonials = [
   },
   {
     nl: {
-      text: 'Een heerlijke halaltaart — we waren zo blij. Alles was verrukkelijk!',
+      text: 'Een heerlijke chocoladetaart — we waren zo blij. Alles was verrukkelijk!',
       name: 'Amine Tesfay',
-      occasion: 'Familiefeest, halal',
+      occasion: 'Familiefeest, Den Haag',
     },
     ti: {
-      text: 'ናይ ጾም ቶርታ፣ ብጣዕሚ ሕጉሳት። ኩሉ ምቁር ኔሩ!',
+      text: 'ሓደ ጥዑም ናይ ቸኮሌት ኬክ፡ ኣዚና ሕጉሳት ኔርና። ኩሉ ጥዑም ኔሩ!',
       name: 'ኣሚነ ተስፋይ',
-      occasion: 'ናይ ቤተሰብ ፌስታ, ናይ ጾም',
+      occasion: 'ናይ ቤተሰብ ፌስታ, ደን ሃግ',
     },
   },
 ]
