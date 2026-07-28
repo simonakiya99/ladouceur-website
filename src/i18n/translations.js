@@ -117,6 +117,7 @@ export const translations = {
     footer_social_title: 'Volg ons',
     footer_privacy: 'Privacybeleid',
     footer_bottom: '© 2026 SB — Alle rechten voorbehouden',
+    footer_credit_by: 'Website door',
 
     // FAQ
     faq_tag: 'Veelgestelde vragen',
@@ -272,6 +273,7 @@ export const translations = {
     footer_social_title: 'ኣስዕቡና',
     footer_privacy: 'ናይ ብሕትነት ፖሊሲ',
     footer_bottom: '© 2026 SB — ኩሉ መሰላት ዝተሓለወ እዩ።',
+    footer_credit_by: 'ዌብሳይት ብ',
 
     // FAQ
     faq_tag: 'ብዙሕ ዝሕተቱ ሕቶታት',

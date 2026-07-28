@@ -1064,6 +1064,20 @@ footer {
   color: rgba(255, 255, 255, 0.2);
 }
 
+.footer-credit-sep {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.footer-credit {
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-credit:hover {
+  color: #c9a96e;
+}
+
 /* ===== FORM FEEDBACK ===== */
 .form-success {
   background: #f0f9f4;

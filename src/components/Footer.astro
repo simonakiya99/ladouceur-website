@@ -6,6 +6,7 @@ const privacyHref = lang === 'ti' ? '/ti/privacybeleid/' : '/privacybeleid/'
 const instagramUrl = 'https://www.instagram.com/selam_bakery16/'
 const tiktokUrl    = 'https://www.tiktok.com/@selambakery'
 const whatsappUrl  = 'https://wa.me/message/WCHNSBSGRS76F1'
+const devWhatsappUrl = 'https://wa.me/31638201510'
 ---
 <footer id="contact">
   <div class="footer-brand">
@@ -40,4 +41,8 @@ const whatsappUrl  = 'https://wa.me/message/WCHNSBSGRS76F1'
     </ul>
   </div>
 </footer>
-<div class="footer-bottom">{T.footer_bottom}</div>
+<div class="footer-bottom">
+  {T.footer_bottom}
+  <span class="footer-credit-sep"> · </span>
+  <a href={devWhatsappUrl} target="_blank" rel="noopener" class="footer-credit">{T.footer_credit_by} Simon_Akiya</a>
+</div>
