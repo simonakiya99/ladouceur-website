@@ -184,8 +184,8 @@ export const translations = {
     // GALLERY
     gallery_tag: '',
     gallery_title_pre: '',
-    gallery_title_em: 'ክንሰርሖም ንኽእል ኬካታት',
-    filter_all: 'ኩሎም ኬካታት',
+    gallery_title_em: 'ክንሰርሖም ንኽእል ኬካት',
+    filter_all: 'ኩሎም ኬካት',
     filter_wedding: 'ናይ መርዓ ኬክ',
     filter_birthday: 'ናይ ልደት',
     filter_special: 'ፍሉያት',
@@ -234,7 +234,7 @@ export const translations = {
     about_title_post: '፡ ብደስታ ዝተሰርሐ',
     about_text1: 'ኬክ ካብቶም ኣብ ዓለም ዝፍተዉ ምቁራት ምግብታት ሓደ እዩ — ኣብ ልደት፣ መርዓ፣ ናይ ስድራ በዓላትን ካልኦት ፍሉያት ኣጋጣሚታትን ዋና ተመራጺ ይገብሮ። ኣብ SB፡ ሓቀኛ ጣዕሚ ካብ ጽሬት ናይ ኣቕሑን ካብ ጥንቃቐ ኣብ ምስራሕን ዝምንጩ ምዃኑ ኣሚና ንሰርሖ።',
     about_text2: 'ካብ ቸኮሌት ክሳዕ ቫኒላ፣ ካብ ፍሩታዊ ኬካት ክሳዕ ዘመናዊ ናይ ዲዛይን ስራሓት — ብምሩጽ ኣቕሑን ብሞያዊ ኣገባብን ዝተዳለዉ ኬካት ነቕርብ። ዕላማና ንዓማዊልና ጣዕሚ፣ ጽሬትን ዘይርሳዕ ተሞክሮን ምቕራብ እዩ።',
-    about_btn_gallery: 'ዝሰራሕናዮም ኬካታት ርአ',
+    about_btn_gallery: 'ዝሰራሕናዮም ኬካት ርአ',
     about_btn_gallery_close: 'ስእልታት ሕባእ',
     about_badge_l1: 'ብኢድ ዝተዳለወ',
     about_badge_l2: 'ብፍቕሪ',
@@ -264,9 +264,9 @@ export const translations = {
     enroll_error: '✗ ጌጋ ተፈጢሩ። በጃኻ እንደገና ፈትን።',
 
     // FOOTER
-    footer_desc: 'ብኢድ ዝተዳለወ፡ ብፍቕርን ብሓጎስ ስምዒትን ዝተሰርሐ ምኡዝ ኬክ። ኣብ ውራይኩም ጥዑም ተዘክሮታት ዝገድፉ ኬካታት።',
+    footer_desc: 'ብኢድ ዝተዳለወ፡ ብፍቕርን ብሓጎስ ስምዒትን ዝተሰርሐ ምኡዝ ኬክ። ኣብ ውራይኩም ጥዑም ተዘክሮታት ዝገድፉ ኬካት።',
     footer_nav_title: 'መመላለሲ',
-    footer_nav_cakes: 'ኬካታትና',
+    footer_nav_cakes: 'ኬካትና',
     footer_nav_order: 'ምእዛዝ',
     footer_nav_contact: 'ርኸቡና',
     footer_contact_title: 'ርኸቡና',
@@ -299,7 +299,7 @@ export const translations = {
     whatsapp_label: 'ብ WhatsApp ርኸቡና',
 
     // PRICE
-    price_label: 'ኬካታት ካብ',
+    price_label: 'ኬካት ካብ',
     price_amount: '€45',
 
     // 404
