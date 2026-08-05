@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets'
 import { translations } from '../i18n/translations.js'
+import fysiekImg from '../assets/courses/fysiek.png'
+import onlineImg from '../assets/courses/online.png'
 const { lang } = Astro.props
 const T = translations[lang]
 
@@ -13,7 +16,7 @@ const courses = [
       ti: 'ምስራሕ ኬክ ተማሃር — ካብ መጀመርታ ክሳብ መወዳእታ፡ ብኣካል ወይ ብኢንተርነት።',
     },
     duration: { nl: 'Op aanvraag', ti: 'ብሕቶ' },
-    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80',
+    img: fysiekImg,
   },
   {
     id: 2,
@@ -24,7 +27,7 @@ const courses = [
       ti: 'ናይ ኬክ ስነ-ጥበብ ብኦንላይን ምምሃር። ካብ ጀማሪ ክሳብ ዛዛሚ — ብናትኩም ደረጃ ዝተዳለወ።',
     },
     duration: { nl: 'Op eigen tempo', ti: 'ብናትኩም ፍጥነት' },
-    img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80',
+    img: onlineImg,
   },
 ]
 ---
@@ -42,7 +45,7 @@ const courses = [
     {courses.map(course => (
       <div class="course-card">
         <div class="course-img-wrap">
-          <img src={course.img} alt={course.title[lang]} loading="lazy" />
+          <Image src={course.img} alt={course.title[lang]} width={900} height={506} loading="lazy" />
           <span class={`course-type-badge${course.online ? ' online' : ''}`}>
             {course.online ? T.courses_type_online : T.courses_type_physical}
           </span>

@@ -14,7 +14,7 @@ const cakes = [
   },
   {
     id: 2,
-    title: { nl: 'Hartvormige Verjaardagstaart', ti: 'ናይ ልቢ ቅርጺ ናይ ልደት ኬክ' },
+    title: { nl: 'Hartvormige Verjaardagstaart', ti: 'ናይ ልቢ ቅዲ ናይ ልደት ኬክ' },
     category: 'verjaardag',
     desc: {
       nl: 'Romantische hartvormige taart met zachte crème en gouden tekst.',
