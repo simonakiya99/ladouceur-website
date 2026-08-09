@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react'
-import emailjs from '@emailjs/browser'
 import { translations } from '../i18n/translations'
-
-const SERVICE_ID = 'service_pweecrd'
-const TEMPLATE_ID = 'template_6a8x9rg'
-const PUBLIC_KEY = 'aH2UrdkRJjRtJE-Hr'
 
 function CourseEnroll({ lang }) {
   const [open, setOpen] = useState(false)
@@ -39,21 +34,26 @@ function CourseEnroll({ lang }) {
     setLoading(true)
     setStatus(null)
 
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-      cursus_type: courseName,
-      voornaam: fields.voornaam,
-      achternaam: fields.achternaam,
-      email: fields.email,
-      telefoon: fields.telefoon,
-      name: `${fields.voornaam} ${fields.achternaam}`,
-    }, PUBLIC_KEY)
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'cursusinschrijving',
+        cursus_type: courseName,
+        voornaam: fields.voornaam,
+        achternaam: fields.achternaam,
+        email: fields.email,
+        telefoon: fields.telefoon,
+        naam: `${fields.voornaam} ${fields.achternaam}`,
+      }).toString(),
+    })
       .then(() => {
         setStatus('success')
         setLoading(false)
         setFields({ voornaam: '', achternaam: '', email: '', telefoon: '' })
       })
       .catch((err) => {
-        console.error('EmailJS fout:', err)
+        console.error('Verzenden mislukt:', err)
         setStatus('error')
         setLoading(false)
       })
@@ -64,10 +64,21 @@ function CourseEnroll({ lang }) {
     setStatus(null)
   }
 
-  if (!open) return null
-
   return (
-    <div className="enroll-overlay" onClick={handleClose}>
+    <>
+      {/* Statische stub-form zodat Netlify dit formulier bij het builden herkent (de echte modal wordt pas client-side gerenderd) */}
+      <form name="cursusinschrijving" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="text" name="cursus_type" />
+        <input type="text" name="voornaam" />
+        <input type="text" name="achternaam" />
+        <input type="email" name="email" />
+        <input type="tel" name="telefoon" />
+        <input type="text" name="naam" />
+        <input type="text" name="bot-field" />
+      </form>
+
+      {open && (
+      <div className="enroll-overlay" onClick={handleClose}>
       <div className="enroll-modal" onClick={e => e.stopPropagation()}>
         <button className="enroll-close" onClick={handleClose} aria-label={T.aria_close}>×</button>
 
@@ -77,7 +88,18 @@ function CourseEnroll({ lang }) {
           <p className="enroll-subtitle">{T.enroll_subtitle}</p>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          name="cursusinschrijving"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="cursusinschrijving" />
+          <p style={{ display: 'none' }}>
+            <label>
+              Laat dit veld leeg: <input name="bot-field" />
+            </label>
+          </p>
           <div className="form-grid">
             <div className="form-group">
               <label htmlFor="e-voornaam">{T.label_firstname}</label>
@@ -143,7 +165,9 @@ function CourseEnroll({ lang }) {
           </button>
         </form>
       </div>
-    </div>
+      </div>
+      )}
+    </>
   )
 }
 

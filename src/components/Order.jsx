@@ -1,10 +1,5 @@
 import { useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
 import { translations } from '../i18n/translations'
-
-const SERVICE_ID = 'service_pweecrd'
-const TEMPLATE_ID = 'template_ohnue0q'
-const PUBLIC_KEY = 'aH2UrdkRJjRtJE-Hr'
 
 function Order({ lang }) {
   const formRef = useRef()
@@ -17,7 +12,11 @@ function Order({ lang }) {
     setLoading(true)
     setStatus(null)
 
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(formRef.current)).toString(),
+    })
       .then(() => {
         setStatus('success')
         setLoading(false)
@@ -57,7 +56,19 @@ function Order({ lang }) {
 
         <div className="order-form">
           <div className="form-title">{T.form_title}</div>
-          <form ref={formRef} onSubmit={handleSubmit}>
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            name="bestelling"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="bestelling" />
+            <p style={{ display: 'none' }}>
+              <label>
+                Laat dit veld leeg: <input name="bot-field" />
+              </label>
+            </p>
             <div className="form-grid">
               <div className="form-group">
                 <label htmlFor="f-voornaam">{T.label_firstname}</label>
