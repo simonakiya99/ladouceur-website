@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import Navbar from '../../components/Navbar.astro'
 import Hero from '../../components/Hero.astro'
@@ -14,6 +15,16 @@ import Footer from '../../components/Footer.astro'
 import '../../index.css'
 
 const lang = 'ti'
+
+const cakes = (await getCollection('gallery'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(entry => ({
+    id: entry.id,
+    title: { nl: entry.data.title_nl, ti: entry.data.title_ti },
+    category: entry.data.category,
+    desc: { nl: entry.data.desc_nl, ti: entry.data.desc_ti },
+    img: entry.data.image,
+  }))
 ---
 <Layout
   lang={lang}
@@ -24,7 +35,7 @@ const lang = 'ti'
   <Hero lang={lang} />
   <About lang={lang} />
   <WorkGallery lang={lang} />
-  <GalleryIsland lang={lang} client:load />
+  <GalleryIsland lang={lang} cakes={cakes} client:load />
   <Testimonials lang={lang} client:load />
   <Courses lang={lang} />
   <FAQ lang={lang} />

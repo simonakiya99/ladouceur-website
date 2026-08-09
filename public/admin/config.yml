@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/gallery"
+public_folder: "/gallery"
+
+locale: "nl"
+
+collections:
+  - name: "gallery"
+    label: "Taartengalerij"
+    label_singular: "Taart"
+    folder: "src/content/gallery"
+    create: true
+    delete: true
+    identifier_field: "title_nl"
+    format: "json"
+    summary: "{{title_nl}} — {{category}}"
+    fields:
+      - { label: "Foto", name: "image", widget: "image" }
+      - { label: "Titel (Nederlands)", name: "title_nl", widget: "string" }
+      - { label: "Titel (Tigrinya)", name: "title_ti", widget: "string" }
+      - label: "Categorie"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Bruiloft", value: "bruiloft" }
+          - { label: "Verjaardag", value: "verjaardag" }
+          - { label: "Speciaal", value: "speciaal" }
+      - { label: "Beschrijving (Nederlands)", name: "desc_nl", widget: "text" }
+      - { label: "Beschrijving (Tigrinya)", name: "desc_ti", widget: "text" }
+      - { label: "Volgorde", name: "order", widget: "number", value_type: "int", default: 0, hint: "Bepaalt de volgorde in de galerij (laag = eerst)." }
