@@ -11,23 +11,23 @@ collections:
   - name: "gallery"
     label: "Taartengalerij"
     label_singular: "Taart"
+    description: "Klik op '+ Nieuwe Taart' om een foto toe te voegen. Kies een foto, vul een titel in en kies een categorie — dat is alles. De foto verschijnt na een paar minuten op de website."
     folder: "src/content/gallery"
     create: true
     delete: true
     identifier_field: "title_nl"
     format: "json"
     summary: "{{title_nl}} — {{category}}"
+    slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{slug}}"
     fields:
       - { label: "Foto", name: "image", widget: "image" }
-      - { label: "Titel (Nederlands)", name: "title_nl", widget: "string" }
-      - { label: "Titel (Tigrinya)", name: "title_ti", widget: "string" }
+      - { label: "Titel", name: "title_nl", widget: "string", hint: "Bijvoorbeeld: Gouden Accent Taart" }
+      - { label: "Titel (Tigrinya)", name: "title_ti", widget: "string", required: false, hint: "Optioneel — mag je later invullen. Zonder Tigrinya-titel wordt de gewone titel gebruikt." }
       - label: "Categorie"
         name: "category"
         widget: "select"
+        default: "speciaal"
         options:
           - { label: "Bruiloft", value: "bruiloft" }
           - { label: "Verjaardag", value: "verjaardag" }
           - { label: "Speciaal", value: "speciaal" }
-      - { label: "Beschrijving (Nederlands)", name: "desc_nl", widget: "text" }
-      - { label: "Beschrijving (Tigrinya)", name: "desc_ti", widget: "text" }
-      - { label: "Volgorde", name: "order", widget: "number", value_type: "int", default: 0, hint: "Bepaalt de volgorde in de galerij (laag = eerst)." }
