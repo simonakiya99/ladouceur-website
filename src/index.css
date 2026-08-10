@@ -1101,9 +1101,9 @@ footer {
   font-weight: 500;
 }
 
-/* ===== BEHEER (admin upload) ===== */
+/* ===== BEHEER (admin dashboard) ===== */
 .admin-page {
-  max-width: 480px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 8rem 1.5rem 6rem;
 }
@@ -1114,6 +1114,8 @@ footer {
 }
 
 .admin-login {
+  max-width: 480px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -1126,11 +1128,17 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  max-width: 480px;
+  margin: 0 auto 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ddd8d0;
   font-size: 13px;
   color: #555;
+}
+
+.admin-upload {
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .admin-logout {
@@ -1152,6 +1160,213 @@ footer {
   font-family: 'Montserrat', sans-serif;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* ===== ADMIN TABS ===== */
+.admin-tabs {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+/* ===== CERTIFICAAT GENERATOR ===== */
+.cert-generator {
+  max-width: none;
+}
+
+.cert-controls {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.cert-mobile-notice {
+  background: #fff8e7;
+  border: 1px solid #C9A84C;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #7a6030;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  display: none;
+}
+
+.cert-scroll-wrap {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 2rem;
+}
+
+#certificaat {
+  width: 297mm;
+  height: 210mm;
+  background: #fffdf8;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+}
+
+#certificaat::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 15% 20%, rgba(201,168,76,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cert-border-outer {
+  position: absolute;
+  inset: 8mm;
+  border: 2px solid #C9A84C;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cert-border-inner {
+  position: absolute;
+  inset: 11.5mm;
+  border: 0.5px solid rgba(201,168,76,0.45);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cert-flourish {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+  pointer-events: none;
+}
+.cert-flourish.tl { top: 13mm;  left: 13mm; }
+.cert-flourish.tr { top: 13mm;  right: 13mm; transform: scaleX(-1); }
+.cert-flourish.bl { bottom: 13mm; left: 13mm; transform: scaleY(-1); }
+.cert-flourish.br { bottom: 13mm; right: 13mm; transform: scale(-1, -1); }
+
+.cert-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16mm 24mm;
+  gap: 0;
+}
+
+.cert-logo {
+  height: 130px;
+  width: auto;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.cert-top-rule {
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A84C 30%, #C9A84C 70%, transparent);
+  margin-bottom: 14px;
+}
+
+.cert-title {
+  font-family: 'Alex Brush', cursive;
+  font-size: 52px;
+  font-weight: 400;
+  color: #C9A84C;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.cert-name-label {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.cert-name {
+  font-family: 'Alex Brush', cursive;
+  font-size: 50px;
+  font-weight: 400;
+  color: #1a1a1a;
+  min-height: 52px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.cert-mid-rule {
+  width: 52px;
+  height: 1.5px;
+  background: #C9A84C;
+  margin-bottom: 14px;
+}
+
+.cert-body-text {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #444;
+  line-height: 1.6;
+  max-width: 340px;
+  margin-bottom: 6px;
+}
+
+.cert-wish-text {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.cert-footer {
+  display: flex;
+  gap: 60px;
+  align-items: flex-end;
+}
+
+.cert-field {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 4px;
+  min-width: 130px;
+  justify-content: center;
+}
+
+.cert-field-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10.5px;
+  color: #C9A84C;
+  font-weight: 600;
+}
+
+.cert-field-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  color: #333;
+  letter-spacing: 0.02em;
+}
+
+.cert-field-blank {
+  display: inline-block;
+  width: 90px;
+}
+
+@media (max-width: 1200px) {
+  .cert-mobile-notice { display: block; }
 }
 
 /* ===== TAALSCHAKELAAR ===== */

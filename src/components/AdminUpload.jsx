@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 const CATEGORIES = [
   { value: 'bruiloft', label: 'Bruiloft' },
@@ -61,9 +61,7 @@ async function putFile(token, path, base64Content, message, committer, retry = t
   return res.json()
 }
 
-function AdminUpload() {
-  const [ready, setReady] = useState(false)
-  const [user, setUser] = useState(null)
+function AdminUpload({ user }) {
   const [imageFile, setImageFile] = useState(null)
   const [titleNl, setTitleNl] = useState('')
   const [titleTi, setTitleTi] = useState('')
@@ -71,22 +69,6 @@ function AdminUpload() {
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState(null)
   const fileInputRef = useRef()
-
-  useEffect(() => {
-    const identity = window.netlifyIdentity
-    if (!identity) return
-    setReady(true)
-    setUser(identity.currentUser())
-
-    const onLogin = (u) => { setUser(u); identity.close() }
-    const onLogout = () => setUser(null)
-    identity.on('login', onLogin)
-    identity.on('logout', onLogout)
-    return () => {
-      identity.off('login', onLogin)
-      identity.off('logout', onLogout)
-    }
-  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -136,30 +118,8 @@ function AdminUpload() {
     }
   }
 
-  if (!ready) {
-    return <p className="admin-loading">Laden...</p>
-  }
-
-  if (!user) {
-    return (
-      <div className="admin-login">
-        <p>Log in om foto's van je werk toe te voegen aan de galerij.</p>
-        <button className="btn-form" onClick={() => window.netlifyIdentity.open('login')}>
-          Inloggen
-        </button>
-      </div>
-    )
-  }
-
   return (
     <div className="admin-upload">
-      <div className="admin-upload-header">
-        <p>Ingelogd als {user.email}</p>
-        <button className="admin-logout" onClick={() => window.netlifyIdentity.logout()}>
-          Uitloggen
-        </button>
-      </div>
-
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="a-foto">Foto</label>

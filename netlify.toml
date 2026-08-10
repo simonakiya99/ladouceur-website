@@ -4,3 +4,13 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/certificaat"
+  to = "/beheer/"
+  status = 301
+
+[[redirects]]
+  from = "/certificaat/*"
+  to = "/beheer/"
+  status = 301
