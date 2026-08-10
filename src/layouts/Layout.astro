@@ -34,12 +34,12 @@ const siteUrl = 'https://sb-bakery.netlify.app'
     <title>{title}</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
     <script is:inline>
-      // Stuurt Netlify Identity-uitnodigings-/inloglinks door naar het CMS-beheerpaneel.
+      // Stuurt Netlify Identity-uitnodigings-/inloglinks door naar de beheerpagina.
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', (user) => {
           if (!user) {
             window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/'
+              document.location.href = '/beheer/'
             })
           }
         })
