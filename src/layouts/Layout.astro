@@ -1,6 +1,6 @@
 ---
 import { translations } from '../i18n/translations.js'
-const { lang = 'nl', title, description } = Astro.props
+const { lang = 'nl', title, description, noindex = false } = Astro.props
 const T = translations[lang]
 const privacyHref = lang === 'ti' ? '/ti/privacybeleid/' : '/privacybeleid/'
 const whatsappUrl = 'https://wa.me/message/WCHNSBSGRS76F1'
@@ -16,6 +16,7 @@ const siteUrl = 'https://sb-bakery.netlify.app'
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
     <link rel="alternate" hreflang="nl" href={`${siteUrl}${nlPath}`} />
     <link rel="alternate" hreflang="ti" href={`${siteUrl}${tiPath}`} />

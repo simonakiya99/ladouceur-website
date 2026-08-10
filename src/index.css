@@ -1101,6 +1101,59 @@ footer {
   font-weight: 500;
 }
 
+/* ===== BEHEER (admin upload) ===== */
+.admin-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem 6rem;
+}
+
+.admin-loading {
+  text-align: center;
+  color: #999;
+}
+
+.admin-login {
+  text-align: center;
+}
+
+.admin-login p {
+  margin-bottom: 1.25rem;
+  color: #555;
+}
+
+.admin-upload-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd8d0;
+  font-size: 13px;
+  color: #555;
+}
+
+.admin-logout {
+  background: none;
+  border: none;
+  color: #c9a96e;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.admin-upload input[type="file"] {
+  border: 1.5px solid #ddd8d0;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* ===== TAALSCHAKELAAR ===== */
 .navbar-right {
   display: flex;

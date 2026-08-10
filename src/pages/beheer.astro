@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro'
+import AdminUpload from '../components/AdminUpload.jsx'
+import '../index.css'
+---
+<Layout
+  lang="nl"
+  title="Beheer — SB Bakery"
+  description="Foto's toevoegen aan de galerij."
+  noindex={true}
+>
+  <section class="admin-page">
+    <div class="section-header">
+      <h2 class="section-title">Foto <em>toevoegen</em></h2>
+      <div class="divider"></div>
+    </div>
+    <AdminUpload client:only="react" />
+  </section>
+</Layout>
