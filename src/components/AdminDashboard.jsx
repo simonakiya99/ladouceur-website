@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import AdminUpload from './AdminUpload.jsx'
+import AdminGalleryList from './AdminGalleryList.jsx'
 import CertificateGenerator from './CertificateGenerator.jsx'
 
 const TABS = [
@@ -11,6 +12,7 @@ function AdminDashboard() {
   const [ready, setReady] = useState(false)
   const [user, setUser] = useState(null)
   const [tab, setTab] = useState('foto')
+  const [galleryRefreshKey, setGalleryRefreshKey] = useState(0)
 
   useEffect(() => {
     const identity = window.netlifyIdentity
@@ -64,7 +66,13 @@ function AdminDashboard() {
         ))}
       </div>
 
-      {tab === 'foto' && <AdminUpload user={user} />}
+      {tab === 'foto' && (
+        <>
+          <AdminUpload user={user} onUploaded={() => setGalleryRefreshKey((k) => k + 1)} />
+          <h3 className="admin-gallery-heading">Bestaande foto's</h3>
+          <AdminGalleryList key={galleryRefreshKey} user={user} />
+        </>
+      )}
       {tab === 'certificaat' && <CertificateGenerator />}
     </div>
   )

@@ -1162,6 +1162,91 @@ footer {
   box-sizing: border-box;
 }
 
+/* ===== ADMIN GALLERY LIST ===== */
+.admin-gallery-heading {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  max-width: 480px;
+  margin: 3.5rem auto 1.25rem;
+  text-align: left;
+}
+
+.admin-gallery-list {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-gallery-item {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd8d0;
+  border-radius: 8px;
+  align-items: flex-start;
+}
+
+.admin-gallery-thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.admin-gallery-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-gallery-edit {
+  flex: 1;
+}
+
+.admin-gallery-edit .form-group {
+  margin-bottom: 0.6rem;
+}
+
+.admin-gallery-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.admin-gallery-category {
+  font-size: 10px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.admin-gallery-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 6px;
+}
+
+.admin-gallery-delete {
+  color: #b5453f;
+}
+
+.admin-gallery-error {
+  text-align: center;
+  color: #b5453f;
+}
+
+.admin-gallery-error button {
+  margin-top: 0.75rem;
+}
+
 /* ===== ADMIN TABS ===== */
 .admin-tabs {
   display: flex;

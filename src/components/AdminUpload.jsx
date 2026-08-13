@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { fileToBase64, utf8ToBase64, gitPut, committerFor } from '../lib/gitGateway.js'
 
 const CATEGORIES = [
   { value: 'bruiloft', label: 'Bruiloft' },
@@ -20,48 +21,7 @@ function timestampPrefix() {
   return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`
 }
 
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.onload = () => resolve(String(reader.result).split(',')[1])
-    reader.onerror = reject
-    reader.readAsDataURL(file)
-  })
-}
-
-function utf8ToBase64(str) {
-  return btoa(unescape(encodeURIComponent(str)))
-}
-
-async function putFile(token, path, base64Content, message, committer, retry = true) {
-  const res = await fetch(`/.netlify/git/github/contents/${path}`, {
-    method: 'PUT',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      path,
-      message,
-      content: base64Content,
-      branch: 'main',
-      committer,
-    }),
-  })
-
-  if (res.status === 401 && retry) {
-    const freshToken = await window.netlifyIdentity.currentUser().jwt(true)
-    return putFile(freshToken, path, base64Content, message, committer, false)
-  }
-
-  if (!res.ok) {
-    throw new Error(`Opslaan mislukt (${res.status})`)
-  }
-
-  return res.json()
-}
-
-function AdminUpload({ user }) {
+function AdminUpload({ user, onUploaded }) {
   const [imageFile, setImageFile] = useState(null)
   const [titleNl, setTitleNl] = useState('')
   const [titleTi, setTitleTi] = useState('')
@@ -78,7 +38,7 @@ function AdminUpload({ user }) {
 
     try {
       const token = await user.jwt()
-      const committer = { name: user.user_metadata?.full_name || user.email, email: user.email }
+      const committer = committerFor(user)
 
       const prefix = timestampPrefix()
       const slug = slugify(titleNl) || 'foto'
@@ -88,7 +48,13 @@ function AdminUpload({ user }) {
       const contentPath = `src/content/gallery/${baseName}.json`
 
       const imageBase64 = await fileToBase64(imageFile)
-      await putFile(token, imagePath, imageBase64, `Foto toegevoegd: ${titleNl}`, committer)
+      await gitPut(token, imagePath, {
+        path: imagePath,
+        message: `Foto toegevoegd: ${titleNl}`,
+        content: imageBase64,
+        branch: 'main',
+        committer,
+      })
 
       const entry = {
         image: `/gallery/${baseName}.${ext}`,
@@ -96,13 +62,13 @@ function AdminUpload({ user }) {
         ...(titleTi.trim() ? { title_ti: titleTi.trim() } : {}),
         category,
       }
-      await putFile(
-        token,
-        contentPath,
-        utf8ToBase64(JSON.stringify(entry, null, 2) + '\n'),
-        `Taart toegevoegd: ${titleNl}`,
-        committer
-      )
+      await gitPut(token, contentPath, {
+        path: contentPath,
+        message: `Taart toegevoegd: ${titleNl}`,
+        content: utf8ToBase64(JSON.stringify(entry, null, 2) + '\n'),
+        branch: 'main',
+        committer,
+      })
 
       setStatus('success')
       setTitleNl('')
@@ -110,6 +76,7 @@ function AdminUpload({ user }) {
       setCategory('speciaal')
       setImageFile(null)
       if (fileInputRef.current) fileInputRef.current.value = ''
+      onUploaded?.()
     } catch (err) {
       console.error(err)
       setStatus('error')
