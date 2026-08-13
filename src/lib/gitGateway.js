@@ -20,7 +20,10 @@ export function committerFor(user) {
 }
 
 async function request(token, method, path, body, retry) {
-  const res = await fetch(`/.netlify/git/github/contents/${path}`, {
+  const url = method === 'GET'
+    ? `/.netlify/git/github/contents/${path}?ref=main`
+    : `/.netlify/git/github/contents/${path}`
+  const res = await fetch(url, {
     method,
     headers: {
       Authorization: `Bearer ${token}`,
@@ -35,7 +38,8 @@ async function request(token, method, path, body, retry) {
   }
 
   if (!res.ok) {
-    throw new Error(`${method} ${path} mislukt (${res.status})`)
+    const bodyText = await res.text().catch(() => '')
+    throw new Error(`${method} ${path} mislukt (${res.status}): ${bodyText.slice(0, 300)}`)
   }
 
   return res.json()

@@ -11,7 +11,7 @@ const categoryLabel = (value) => CATEGORIES.find((c) => c.value === value)?.labe
 
 function AdminGalleryList({ user }) {
   const [entries, setEntries] = useState(null)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(null)
   const [editingPath, setEditingPath] = useState(null)
   const [editFields, setEditFields] = useState({ title_nl: '', title_ti: '', category: 'speciaal' })
   const [busyPath, setBusyPath] = useState(null)
@@ -19,7 +19,7 @@ function AdminGalleryList({ user }) {
   useEffect(() => { load() }, [])
 
   async function load() {
-    setError(false)
+    setError(null)
     setEntries(null)
     try {
       const token = await user.jwt()
@@ -33,7 +33,7 @@ function AdminGalleryList({ user }) {
       setEntries(withContent)
     } catch (err) {
       console.error(err)
-      setError(true)
+      setError(err.message || 'onbekende fout')
     }
   }
 
@@ -112,6 +112,7 @@ function AdminGalleryList({ user }) {
     return (
       <div className="admin-gallery-error">
         <p>Kon de foto's niet laden.</p>
+        <p className="admin-gallery-error-detail">{error}</p>
         <button className="admin-logout" onClick={load}>Opnieuw proberen</button>
       </div>
     )

@@ -1247,6 +1247,13 @@ footer {
   margin-top: 0.75rem;
 }
 
+.admin-gallery-error-detail {
+  font-size: 11px;
+  color: #999;
+  margin-top: 0.5rem;
+  word-break: break-word;
+}
+
 /* ===== ADMIN TABS ===== */
 .admin-tabs {
   display: flex;
