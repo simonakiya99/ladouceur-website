@@ -1457,6 +1457,12 @@ footer {
   width: 90px;
 }
 
+.cert-signature-img {
+  height: 42px;
+  width: auto;
+  margin-bottom: -8px;
+}
+
 @media (max-width: 1200px) {
   .cert-mobile-notice { display: block; }
 }

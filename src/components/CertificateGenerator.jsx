@@ -111,7 +111,7 @@ function CertificateGenerator() {
               </div>
               <div className="cert-field">
                 <span className="cert-field-label">Signature:</span>
-                <span className="cert-field-blank"></span>
+                <img src="/certificate/signature.png" alt="" className="cert-signature-img" />
               </div>
             </div>
           </div>
