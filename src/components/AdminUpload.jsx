@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { fileToBase64, utf8ToBase64, gitPut, committerFor } from '../lib/gitGateway.js'
+import { blobToBase64, compressImage, utf8ToBase64, gitPut, committerFor } from '../lib/gitGateway.js'
 
 const CATEGORIES = [
   { value: 'bruiloft', label: 'Bruiloft' },
@@ -43,12 +43,22 @@ function AdminUpload({ user, onUploaded }) {
 
       const prefix = timestampPrefix()
       const slug = slugify(titleNl) || 'foto'
-      const ext = (imageFile.name.split('.').pop() || 'jpg').toLowerCase()
       const baseName = `${prefix}-${slug}`
+
+      let ext = 'webp'
+      let imageBlob
+      try {
+        imageBlob = await compressImage(imageFile)
+      } catch (err) {
+        console.error('Comprimeren mislukt, upload originele foto:', err)
+        imageBlob = imageFile
+        ext = (imageFile.name.split('.').pop() || 'jpg').toLowerCase()
+      }
+
       const imagePath = `public/gallery/${baseName}.${ext}`
       const contentPath = `src/content/gallery/${baseName}.json`
 
-      const imageBase64 = await fileToBase64(imageFile)
+      const imageBase64 = await blobToBase64(imageBlob)
       await gitPut(token, imagePath, {
         path: imagePath,
         message: `Foto toegevoegd: ${titleNl}`,

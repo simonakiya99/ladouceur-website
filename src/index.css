@@ -1027,11 +1027,11 @@ footer {
   vertical-align: middle;
 }
 
-.footer-col h4 {
+.footer-col h3 {
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 1.25rem;
   font-weight: 600;
 }
@@ -1045,14 +1045,17 @@ footer {
 
 .footer-col a {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.25);
+  text-underline-offset: 3px;
   transition: color 0.2s;
   font-weight: 300;
 }
 
 .footer-col a:hover {
   color: #c9a96e;
+  text-decoration-color: #c9a96e;
 }
 
 .footer-bottom {
@@ -1061,21 +1064,24 @@ footer {
   padding: 1.25rem;
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-credit-sep {
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .footer-credit {
-  color: rgba(255, 255, 255, 0.35);
-  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.25);
+  text-underline-offset: 3px;
   transition: color 0.2s;
 }
 
 .footer-credit:hover {
   color: #c9a96e;
+  text-decoration-color: #c9a96e;
 }
 
 /* ===== FORM FEEDBACK ===== */
