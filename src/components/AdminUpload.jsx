@@ -26,6 +26,7 @@ function AdminUpload({ user, onUploaded }) {
   const [titleNl, setTitleNl] = useState('')
   const [titleTi, setTitleTi] = useState('')
   const [category, setCategory] = useState('speciaal')
+  const [orderable, setOrderable] = useState(false)
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState(null)
   const fileInputRef = useRef()
@@ -61,6 +62,7 @@ function AdminUpload({ user, onUploaded }) {
         title_nl: titleNl.trim(),
         ...(titleTi.trim() ? { title_ti: titleTi.trim() } : {}),
         category,
+        orderable,
       }
       await gitPut(token, contentPath, {
         path: contentPath,
@@ -74,6 +76,7 @@ function AdminUpload({ user, onUploaded }) {
       setTitleNl('')
       setTitleTi('')
       setCategory('speciaal')
+      setOrderable(false)
       setImageFile(null)
       if (fileInputRef.current) fileInputRef.current.value = ''
       onUploaded?.()
@@ -129,6 +132,18 @@ function AdminUpload({ user, onUploaded }) {
               <option key={c.value} value={c.value}>{c.label}</option>
             ))}
           </select>
+        </div>
+
+        <div className="form-group admin-checkbox-group">
+          <label htmlFor="a-bestelbaar">
+            <input
+              id="a-bestelbaar"
+              type="checkbox"
+              checked={orderable}
+              onChange={(e) => setOrderable(e.target.checked)}
+            />
+            Klanten kunnen deze taart bestellen via het bestelformulier
+          </label>
         </div>
 
         {status === 'success' && (

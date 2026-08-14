@@ -13,7 +13,7 @@ function AdminGalleryList({ user }) {
   const [entries, setEntries] = useState(null)
   const [error, setError] = useState(null)
   const [editingPath, setEditingPath] = useState(null)
-  const [editFields, setEditFields] = useState({ title_nl: '', title_ti: '', category: 'speciaal' })
+  const [editFields, setEditFields] = useState({ title_nl: '', title_ti: '', category: 'speciaal', orderable: false })
   const [busyPath, setBusyPath] = useState(null)
 
   useEffect(() => { load() }, [])
@@ -43,6 +43,7 @@ function AdminGalleryList({ user }) {
       title_nl: entry.data.title_nl,
       title_ti: entry.data.title_ti || '',
       category: entry.data.category,
+      orderable: entry.data.orderable !== false,
     })
   }
 
@@ -50,7 +51,12 @@ function AdminGalleryList({ user }) {
     setBusyPath(entry.path)
     try {
       const token = await user.jwt()
-      const newData = { ...entry.data, title_nl: editFields.title_nl.trim(), category: editFields.category }
+      const newData = {
+        ...entry.data,
+        title_nl: editFields.title_nl.trim(),
+        category: editFields.category,
+        orderable: editFields.orderable,
+      }
       if (editFields.title_ti.trim()) newData.title_ti = editFields.title_ti.trim()
       else delete newData.title_ti
 
@@ -157,6 +163,16 @@ function AdminGalleryList({ user }) {
                   {CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
                 </select>
               </div>
+              <div className="form-group admin-checkbox-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={editFields.orderable}
+                    onChange={(e) => setEditFields((f) => ({ ...f, orderable: e.target.checked }))}
+                  />
+                  Klanten kunnen deze taart bestellen
+                </label>
+              </div>
               <div className="admin-gallery-actions">
                 <button className="btn-form" onClick={() => saveEdit(entry)} disabled={busyPath === entry.path}>
                   {busyPath === entry.path ? 'Bezig...' : 'Opslaan'}
@@ -167,7 +183,10 @@ function AdminGalleryList({ user }) {
           ) : (
             <div className="admin-gallery-info">
               <p className="admin-gallery-title">{entry.data.title_nl}</p>
-              <p className="admin-gallery-category">{categoryLabel(entry.data.category)}</p>
+              <p className="admin-gallery-category">
+                {categoryLabel(entry.data.category)}
+                {entry.data.orderable === false ? ' · niet bestelbaar' : ' · bestelbaar'}
+              </p>
               <div className="admin-gallery-actions">
                 <button className="admin-logout" onClick={() => startEdit(entry)}>Bewerken</button>
                 <button

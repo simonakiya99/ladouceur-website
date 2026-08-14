@@ -23,6 +23,7 @@ const cakes = (await getCollection('gallery'))
     title: { nl: entry.data.title_nl, ti: entry.data.title_ti || entry.data.title_nl },
     category: entry.data.category,
     img: entry.data.image,
+    orderable: entry.data.orderable,
   }))
 ---
 <Layout

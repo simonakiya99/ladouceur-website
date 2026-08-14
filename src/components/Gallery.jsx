@@ -83,21 +83,23 @@ function Gallery({ lang, cakes = [] }) {
                   transition: 'transform 0.6s ease'
                 }}
               />
-              <div className="gallery-overlay" style={{
-                opacity: hoveredId === cake.id ? 1 : 0,
-                transition: 'opacity 0.4s ease'
-              }}>
-                <button
-                  className="btn-order-cake"
-                  onClick={() => orderCake(cake)}
-                  style={{
-                    transform: hoveredId === cake.id ? 'translateY(0)' : 'translateY(10px)',
-                    transition: 'all 0.4s ease'
-                  }}
-                >
-                  {T.btn_order_cake}
-                </button>
-              </div>
+              {cake.orderable && (
+                <div className="gallery-overlay" style={{
+                  opacity: hoveredId === cake.id ? 1 : 0,
+                  transition: 'opacity 0.4s ease'
+                }}>
+                  <button
+                    className="btn-order-cake"
+                    onClick={() => orderCake(cake)}
+                    style={{
+                      transform: hoveredId === cake.id ? 'translateY(0)' : 'translateY(10px)',
+                      transition: 'all 0.4s ease'
+                    }}
+                  >
+                    {T.btn_order_cake}
+                  </button>
+                </div>
+              )}
             </div>
             <div className="gallery-card-body">
               <span className="cake-card-tag">{getCategoryTag(cake.category)}</span>

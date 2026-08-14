@@ -8,6 +8,7 @@ const gallery = defineCollection({
     title_nl: z.string(),
     title_ti: z.string().optional(),
     category: z.enum(['bruiloft', 'verjaardag', 'speciaal']),
+    orderable: z.boolean().default(true),
   }),
 })
 

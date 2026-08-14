@@ -31,3 +31,4 @@ collections:
           - { label: "Bruiloft", value: "bruiloft" }
           - { label: "Verjaardag", value: "verjaardag" }
           - { label: "Speciaal", value: "speciaal" }
+      - { label: "Klanten kunnen deze taart bestellen", name: "orderable", widget: "boolean", default: false }
