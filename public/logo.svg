@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">SB Bakery logo</title>
+  <desc id="logoDesc">Golden SB monogram with bakery tagline</desc>
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4d89d" />
+      <stop offset="100%" stop-color="#c9a96e" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="280" fill="none" />
+  <circle cx="450" cy="120" r="104" fill="none" stroke="url(#gold-grad)" stroke-width="8" opacity="0.95" />
+  <text x="450" y="152" text-anchor="middle" font-family="Georgia, serif" font-size="120" letter-spacing="-5" fill="url(#gold-grad)">SB</text>
+  <text x="450" y="222" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="32" letter-spacing="0.32em" fill="#c9a96e">BAKERY</text>
+  <path d="M320 240 H580" stroke="url(#gold-grad)" stroke-width="4" stroke-linecap="round" opacity="0.9" />
+</svg>

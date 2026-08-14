@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro'
+import AdminDashboard from '../components/AdminDashboard.jsx'
+import '../index.css'
+---
+<Layout
+  lang="nl"
+  title="Beheer — Selam Bakery"
+  description="Beheerpaneel voor Selam Bakery."
+  noindex={true}
+>
+  <section class="admin-page">
+    <div class="section-header">
+      <h2 class="section-title">Beheer</h2>
+      <div class="divider"></div>
+    </div>
+    <AdminDashboard client:only="react" />
+  </section>
+</Layout>

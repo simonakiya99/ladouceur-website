@@ -1,0 +1,62 @@
+---
+import { translations } from '../i18n/translations.js'
+const { lang } = Astro.props
+const T = translations[lang]
+---
+<section class="about-section" id="verhaal">
+  <div class="about-layout">
+    <div class="about-image-col">
+      <div class="about-img-frame">
+        <img
+          src="/profiel.jpg"
+          alt="Selam Bakery"
+          class="about-img"
+          loading="lazy"
+        />
+        <div class="about-badge">
+          <span class="about-badge-icon">✦</span>
+          <span class="about-badge-text">{T.about_badge_l1}<br/>{T.about_badge_l2}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <span class="section-tag">{T.about_tag}</span>
+      <h2 class="section-title">
+        {T.about_title_pre}<em>{T.about_title_em}</em>{T.about_title_post}
+      </h2>
+      <p class="about-text">{T.about_text1}</p>
+      <p class="about-text">{T.about_text2}</p>
+      <button
+        type="button"
+        id="show-work-gallery"
+        class="btn-secondary about-gallery-btn"
+        data-open={T.about_btn_gallery}
+        data-close={T.about_btn_gallery_close}
+      >{T.about_btn_gallery}</button>
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  window.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('show-work-gallery')
+    const gallery = document.getElementById('handwerk')
+
+    if (!button || !gallery) return
+
+    button.addEventListener('click', () => {
+      const isHidden = gallery.classList.contains('hidden-by-default')
+
+      if (isHidden) {
+        gallery.classList.remove('hidden-by-default')
+        button.textContent = button.dataset.close
+        gallery.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        gallery.classList.add('hidden-by-default')
+        button.textContent = button.dataset.open
+        button.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    })
+  })
+</script>

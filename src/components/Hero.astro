@@ -1,0 +1,43 @@
+---
+import { translations } from '../i18n/translations.js'
+const { lang } = Astro.props
+const T = translations[lang]
+---
+<section class="hero">
+  <div class="hero-bg">
+    <img
+      src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=1600&q=90"
+      alt="Luxe bruidstaart"
+      class="hero-img"
+    />
+    <div class="hero-overlay"></div>
+    <div class="hero-vignette"></div>
+  </div>
+
+  <div class="hero-content">
+    <img src="/logo.png" alt="SB Bakery logo" class="hero-logo" onerror="this.onerror=null; this.src='/sb-monogram.svg'" />
+    <div class="hero-badge-line"></div>
+    <div class="hero-badge">{T.hero_badge}</div>
+    <h1 class="hero-title">
+      {T.hero_title_line1}<br />
+      {T.hero_title_line2} <em>{T.hero_title_em}</em><br />
+      {T.hero_title_line3}
+    </h1>
+    <p class="hero-subtitle">{T.hero_subtitle}</p>
+    <div class="hero-buttons">
+      <a href="#bestelling" class="btn-primary">{T.hero_btn_order}</a>
+      <a href="#galerij" class="btn-secondary">{T.hero_btn_gallery}</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-number">200+</span>
+    <span class="stat-label">{T.stat_customers}</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">100%</span>
+    <span class="stat-label">{T.stat_handmade}</span>
+  </div>
+</div>

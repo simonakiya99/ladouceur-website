@@ -1,17 +1,19 @@
 {
-  "name": "ladouceur-website",
+  "name": "sb-bakery",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "@supabase/supabase-js": "^2.107.0",
+    "@astrojs/react": "^5.0.7",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.4",
+    "html2pdf.js": "^0.14.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

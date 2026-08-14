@@ -1,0 +1,74 @@
+---
+import { translations } from '../i18n/translations.js'
+const { lang } = Astro.props
+const T = translations[lang]
+const nlUrl = '/'
+const tiUrl = '/ti/'
+---
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">
+    <img src="/logo.png" alt="SB Bakery logo" class="nav-logo-img" onerror="this.onerror=null; this.src='/sb-monogram.svg'" />
+    <span class="nav-logo-text">SB</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#galerij">{T.nav_taarten}</a></li>
+    <li><a href="#cursussen">{T.nav_cursussen}</a></li>
+    <li><a href="#bestelling">{T.nav_bestellen}</a></li>
+    <li><a href="#contact">{T.nav_contact}</a></li>
+    <li><a href="#verhaal">{T.nav_about}</a></li>
+  </ul>
+
+  <div class="navbar-right desktop-only">
+    <a href="#bestelling" class="nav-cta">{T.nav_cta}</a>
+    <div class="lang-switcher">
+      <a href={nlUrl} class={`lang-btn ${lang === 'nl' ? 'active' : ''}`}>NL</a>
+      <a href={tiUrl} class={`lang-btn ${lang === 'ti' ? 'active' : ''}`}>TI</a>
+    </div>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label={T.aria_menu}>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#galerij">{T.nav_taarten}</a></li>
+      <li><a href="#cursussen">{T.nav_cursussen}</a></li>
+      <li><a href="#bestelling">{T.nav_bestellen}</a></li>
+      <li><a href="#contact">{T.nav_contact}</a></li>
+      <li><a href="#verhaal">{T.nav_about}</a></li>
+    </ul>
+    <div class="mobile-menu-bottom">
+      <a href="#bestelling" class="nav-cta">{T.nav_cta}</a>
+      <div class="lang-switcher">
+        <a href={nlUrl} class={`lang-btn ${lang === 'nl' ? 'active' : ''}`}>NL</a>
+        <a href={tiUrl} class={`lang-btn ${lang === 'ti' ? 'active' : ''}`}>TI</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar')
+  const hamburger = document.getElementById('hamburger')
+  const mobileMenu = document.getElementById('mobile-menu')
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50)
+  })
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open')
+    hamburger.classList.toggle('open')
+  })
+
+  mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open')
+      hamburger.classList.remove('open')
+    })
+  })
+</script>

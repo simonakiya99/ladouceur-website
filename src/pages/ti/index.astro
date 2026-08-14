@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import Navbar from '../../components/Navbar.astro'
+import Hero from '../../components/Hero.astro'
+import About from '../../components/About.astro'
+import WorkGallery from '../../components/WorkGallery.astro'
+import GalleryIsland from '../../components/Gallery.jsx'
+import Testimonials from '../../components/Testimonials.jsx'
+import Courses from '../../components/Courses.astro'
+import FAQ from '../../components/FAQ.astro'
+import OrderIsland from '../../components/Order.jsx'
+import CourseEnrollIsland from '../../components/CourseEnroll.jsx'
+import Footer from '../../components/Footer.astro'
+import '../../index.css'
+
+const lang = 'ti'
+
+const cakes = (await getCollection('gallery'))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map(entry => ({
+    id: entry.id,
+    title: { nl: entry.data.title_nl, ti: entry.data.title_ti || entry.data.title_nl },
+    category: entry.data.category,
+    img: entry.data.image,
+    orderable: entry.data.orderable,
+  }))
+---
+<Layout
+  lang={lang}
+  title="SB — ናይ ሰላም ኬካት"
+  description="ብኢድ ዝተሰርሑ ሉኹስ ኬካት ንፍሉያት ናይ ህይወትኩም ግዜያት። ናይ መርዓ ኬካት፡ ናይ ልደት ኬካትን ካልኦትን።"
+>
+  <Navbar lang={lang} />
+  <Hero lang={lang} />
+  <About lang={lang} />
+  <WorkGallery lang={lang} />
+  <GalleryIsland lang={lang} cakes={cakes} client:load />
+  <Testimonials lang={lang} client:load />
+  <Courses lang={lang} />
+  <FAQ lang={lang} />
+  <OrderIsland lang={lang} client:load />
+  <CourseEnrollIsland lang={lang} client:load />
+  <Footer lang={lang} />
+</Layout>

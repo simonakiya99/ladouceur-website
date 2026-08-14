@@ -1,0 +1,39 @@
+---
+const { lang = 'nl' } = Astro.props
+const altText = lang === 'ti'
+  ? (i) => `ብኢድ ዝተሰርሐ ኬክ ናይ SB Bakery — ${i}`
+  : (i) => `Handgemaakte taart van SB Bakery — creatie ${i}`
+
+const fallbacks = [
+  'https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=600&q=80',
+  'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80',
+  'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80',
+  'https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=600&q=80',
+  'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&q=80',
+  'https://images.unsplash.com/photo-1562777717-dc6984f65a63?w=600&q=80',
+  'https://images.unsplash.com/photo-1519869325930-281384150729?w=600&q=80',
+  'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&q=80',
+  'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80',
+]
+
+const photos = Array.from({ length: 17 }, (_, i) => ({
+  id: i + 1,
+  src: `/gallery/gallery-${i + 1}.webp`,
+  fallback: fallbacks[i] ?? fallbacks[0],
+}))
+---
+
+<section class="work-gallery hidden-by-default" id="handwerk">
+  <div class="work-gallery-grid">
+    {photos.map(photo => (
+      <div class="work-gallery-item">
+        <img
+          src={photo.src}
+          alt={altText(photo.id)}
+          loading="lazy"
+          onerror={`this.onerror=null;this.src='${photo.fallback}'`}
+        />
+      </div>
+    ))}
+  </div>
+</section>

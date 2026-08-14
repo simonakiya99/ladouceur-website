@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets'
+import { translations } from '../i18n/translations.js'
+import fysiekImg from '../assets/courses/fysiek.png'
+import onlineImg from '../assets/courses/online.png'
+const { lang } = Astro.props
+const T = translations[lang]
+
+const courses = [
+  {
+    id: 1,
+    online: false,
+    title: { nl: 'Fysieke Cursus', ti: 'ብኣካል ኮርስ' },
+    desc: {
+      nl: 'Leer de kunst van taartmaken in een persoonlijke setting. Van fondant werken tot decoreren — stap voor stap begeleid door Selam.',
+      ti: 'ምስራሕ ኬክ ተማሃር — ካብ መጀመርታ ክሳብ መወዳእታ፡ ብኣካል ወይ ብኢንተርነት።',
+    },
+    duration: { nl: 'Op aanvraag', ti: 'ብሕቶ' },
+    img: fysiekImg,
+  },
+  {
+    id: 2,
+    online: true,
+    title: { nl: 'Online Cursus', ti: 'ብኦንላይን ኮርስ' },
+    desc: {
+      nl: 'Volg de cursus vanuit huis, op uw eigen tempo. Videolessen over decoratietechnieken en smaken voor alle niveaus.',
+      ti: 'ናይ ኬክ ስነ-ጥበብ ብኦንላይን ምምሃር። ካብ ጀማሪ ክሳብ ዛዛሚ — ብናትኩም ደረጃ ዝተዳለወ።',
+    },
+    duration: { nl: 'Op eigen tempo', ti: 'ብናትኩም ፍጥነት' },
+    img: onlineImg,
+  },
+]
+---
+<section class="courses-section" id="cursussen">
+  <div class="section-header">
+    <span class="section-tag">{T.courses_tag}</span>
+    <h2 class="section-title">
+      {T.courses_title_pre}<em>{T.courses_title_em}</em>
+    </h2>
+    <p class="courses-subtitle">{T.courses_subtitle}</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="courses-grid">
+    {courses.map(course => (
+      <div class="course-card">
+        <div class="course-img-wrap">
+          <Image src={course.img} alt={course.title[lang]} width={900} height={506} loading="lazy" />
+          <span class={`course-type-badge${course.online ? ' online' : ''}`}>
+            {course.online ? T.courses_type_online : T.courses_type_physical}
+          </span>
+        </div>
+        <div class="course-body">
+          <h3 class="course-title">{course.title[lang]}</h3>
+          <p class="course-desc">{course.desc[lang]}</p>
+          <div class="course-meta">
+            <span class="course-duration">⏱ {course.duration[lang]}</span>
+          </div>
+          <button
+            class="btn-course enroll-btn"
+            data-course={course.title[lang]}
+          >{T.courses_btn}</button>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <p class="courses-note">{T.courses_note}</p>
+</section>
+
+<script>
+  document.querySelectorAll('.enroll-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const courseName = btn.dataset.course
+      window.dispatchEvent(new CustomEvent('course-enroll', { detail: { courseName } }))
+    })
+  })
+</script>
